@@ -8,6 +8,11 @@ add_cpp2py_module(copy_move_stat)
 target_link_libraries(copy_move_stat nda_py)
 target_include_directories(copy_move_stat PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
+# Build the cpp2py module
+add_cpp2py_module(memory_leak)
+target_link_libraries(memory_leak nda_py)
+target_include_directories(memory_leak PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
 ## Build the pybind11 module
 #pybind11_add_module(pybind_a pybind_a.cpp)
 #target_link_libraries(pybind_a PRIVATE pybind11 nda_py python_and_numpy)
@@ -17,7 +22,7 @@ target_include_directories(copy_move_stat PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 #target_link_libraries(pybind_test PRIVATE pybind11 nda_py python_and_numpy)
 
 # List of all tests
-set(all_tests wrap_basic_test copy_move_stat_test)
+set(all_tests wrap_basic_test copy_move_stat_test memory_leak_test)
 
 foreach(test ${all_tests})
   get_filename_component(test_name ${test} NAME_WE)
